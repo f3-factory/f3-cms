@@ -1,0 +1,32 @@
+<include href="admin.htm" />
+<div class="main">
+	<h3>Assets</h3>
+	<set count="{{ count(@assets) }}" />
+	<check if="{{ @count }}">
+	<true>
+		<table>
+			<repeat group="{{ @assets }}" value="{{ @asset }}" counter="{{ @counter }}">
+			<tr {{ @counter%2?'class="odd"':'' }}>
+				<td class="title">{{ @asset.name }}<br /><small>{{ @asset.posted?date(@time_format,@asset.posted):'&nbsp;' }}</small></td>
+			</tr>
+			</repeat>
+		</table>
+	</true>
+	<false>
+		<p>- Empty -</p>
+	</false>
+	</check>
+	<form method="post" action="{{ @BASE }}/admin/assets" enctype="multipart/form-data" class="upload">
+		<h5>Upload</h5>
+		<check if="{{ isset(@message) }}">
+		<p class="message">{{ @message }}</p>
+		</check>
+		<p>
+			<input name="asset" type="file" />
+		</p>
+		<p>
+			<input type="hidden" name="MAX_FILE_SIZE" value="{{ @max_kb*1024 }}" />
+			<button>Submit</button>
+		</p>
+	</form>
+</div>

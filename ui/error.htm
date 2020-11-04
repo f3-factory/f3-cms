@@ -1,0 +1,14 @@
+<include href="user.htm" />
+<div class="main">
+	<h2>{{ @ERROR.code }}</h2>
+	<check if="{{ @ERROR.code==404 }}">
+	<true>
+		<p>There is no page at this address. This may be due to a broken link, a page that no longer exists, or you may have typed the address incorrectly.</p>
+		<p>You might find what you are looking for in one of the pages above.</p>
+	</true>
+	<false>
+		<p>Something went terribly wrong, but please stay calm. We'll get the following error fixed as soon as possible.</p>
+		<p><small>{{ @ERROR.text }}</small></p>
+	</false>
+	</check>
+</div>

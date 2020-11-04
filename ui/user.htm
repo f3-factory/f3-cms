@@ -1,0 +1,14 @@
+<div class="menu">
+	<ul>
+	<repeat group="{{ @menu }}" value="{{ @link }}">
+		<check if="{{ @URI==@BASE.'/'.@link.slug }}">
+		<true>
+		<li class="active">{{ @link.title }}</li>
+		</true>
+		<false>
+		<li><a href="{{ @BASE }}/{{ @link.slug }}">{{ @link.title }}</a></li>
+		</false>
+		</check>
+	</repeat>
+	</ul>
+</div>

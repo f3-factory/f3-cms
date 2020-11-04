@@ -1,0 +1,14 @@
+<div class="menu">
+	<ul>
+	<repeat group="{{ @menu }}" key="{{ @link }}" value="{{ @title }}">
+		<check if="{{ @URI==@BASE.@link }}">
+		<true>
+		<li class="active">{{ @title }}</li>
+		</true>
+		<false>
+		<li><a href="{{ @BASE.@link }}">{{ @title }}</a></li>
+		</false>
+		</check>
+	</repeat>
+	</ul>
+</div>

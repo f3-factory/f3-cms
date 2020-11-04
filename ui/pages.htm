@@ -1,0 +1,17 @@
+<include href="admin.htm" />
+<div class="main">
+	<h3>Pages</h3>
+	<table>
+		<set count="{{ count(@pages) }}" />
+		<repeat group="{{ @pages }}" value="{{ @page }}" counter="{{ @counter }}">
+		<tr {{ @counter%2?'class="odd"':'' }}>
+			<td class="title"><a href="{{ @BASE }}/admin/pages/edit?slug={{ @page.slug }}">{{ @page.title }}</a><br /><small>{{ @page.updated?date(@time_format,@page.updated):'&nbsp;' }}</small></td>
+			<td><check if="{{ @counter>1 }}"><a href="{{ @BASE }}/admin/pages/move?slug={{ @page.slug }}&amp;vector=-1">&#9650;</a></check></td>
+			<td><check if="{{ @counter<@count }}"><a href="{{ @BASE }}/admin/pages/move?slug={{ @page.slug }}&amp;vector=1">&#9660;</a></check></td>
+		</tr>
+		</repeat>
+	</table>
+	<form method="get" action="{{ @BASE }}/admin/pages/edit">
+		<button name="new">New</button>
+	</form>
+</div>

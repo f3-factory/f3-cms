@@ -1,0 +1,103 @@
+body {
+	min-width:320px;
+	width:60%;
+	margin:0 auto;
+	overflow-y:scroll;
+}
+a:hover {
+	text-decoration:none;
+}
+div.header,div.footer {
+	text-align:center;
+}
+div.header h1 {
+	font-size:24pt;
+}
+div.menu {
+	margin:1.5em 0;
+	border-bottom:1px solid gray;
+	width:100%;
+}
+div.menu ul {
+	padding:0;
+	margin:0;
+	line-height:1.5em;
+	overflow:hidden;
+}
+div.menu li {
+	text-transform:lowercase;
+	list-style-type:none;
+	padding-bottom:0.5em;
+	border-bottom:5px solid transparent;
+	margin-right:1.5em;
+	height:1.5em;
+	float:left;
+}
+div.menu li.active {
+	border-bottom:5px solid gray;
+}
+div.menu a {
+	display:block;
+}
+div.main {
+	clear:left;
+}
+div.comments {
+	margin:0 auto;
+	min-width:320px;
+	width:60%;
+}
+div.comments h5 {
+	margin:0.5em 0;
+}
+div.comments div {
+	background:#eee;
+	padding:1em;
+	border:1px solid gray;
+	margin-bottom:1em;
+	height:100%;
+	overflow:hidden;
+}
+div.comments p {
+	font-size:0.8em;
+}
+div.comments p.identicon {
+	padding:0;
+	line-height:1em;
+	min-width:48px;
+	position:absolute;
+}
+div.comments p:last-child {
+	padding:0 0 0 65px;
+}
+div.footer {
+	margin-top:1em;
+	border-top:1px solid gray;
+}
+div.footer p {
+	font-size:10pt;
+	line-height:1em;
+	margin-top:1em;
+}
+form.login,form.comment,form.editor,form.upload {
+	background:#eee;
+	padding:30pt;
+	border:1px solid gray;
+	margin:1.5em auto;
+	width:50%;
+}
+form h5 {
+	margin-top:0;
+}
+tr.odd {
+	background:#eee;
+}
+td.title {
+	width:99%;
+}
+p.message {
+	background:#fcc;
+	padding:0;
+	border:1px solid #f99;
+	margin-bottom:1.5em;
+}

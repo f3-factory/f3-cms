@@ -1,0 +1,46 @@
+<include href="user.htm" />
+<div class="main">
+	<h3>{{ @page.title }}</h3>
+	<div class="contents">
+		<p>{{ nl2br(@page.contents)|raw }}</p>
+		<check if="{{ @page.updated }}">
+		<p><small>Last updated {{ date(@time_format,@page.updated) }}</small></p>
+		</check>
+	</div>
+	<div class="comments">
+		<check if="{{ @comments }}">
+		<h5>Comments</h5>
+		</check>
+		<repeat group="{{ @comments }}" value="{{ @comment }}">
+		<div>
+			<p class="identicon"><img src="{{ @comment.identicon }}" title="{{ @comment.name }}" /></p>
+			<p><small>Posted by {{ @comment.name }} on {{ date(@time_format,@comment.posted) }}</small><br />
+			{{ nl2br(@comment.contents) }}</p>
+		</div>
+		</repeat>
+	</div>
+	<check if="{{ @page.commentable }}">
+	<form method="post" action="{{ @BASE }}/{{ @page.slug }}" class="comment">
+		<h5>Leave a Comment</h5>
+		<check if="{{ isset(@message) }}">
+		<p class="message">{{ @message }}</p>
+		</check>
+		<p>
+			<label for="name"><small>Name</small></label><br />
+			<input id="name" name="name" type="text" {{ isset(@POST.name)?('value="'.@POST.name.'"'):'' }} />
+		</p>
+		<p>
+			<label for="email"><small>E-mail</small></label><br />
+			<input id="email" name="email" type="text" {{ isset(@POST.email)?('value="'.@POST.email.'"'):'' }} />
+		</p>
+		<p>
+			<label for="contents"><small>Comment</small></label><br />
+			<textarea id="contents" name="contents">{{ isset(@POST.name)?@POST.name:'' }}</textarea>
+		</p>
+		<p>
+			<input id="slug" name="slug" value="{{ @page.slug }}" type="hidden" />
+			<button id="save">Save</button>
+		</p>
+	</form>
+	</check>
+</div>

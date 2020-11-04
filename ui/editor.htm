@@ -1,0 +1,29 @@
+<include href="admin.htm" />
+<div class="main">
+	<form method="post" action="{{ @BASE }}/admin/pages/exec" class="editor">
+		<h5>{{ isset(@POST.title)?'Edit':'New' }} Page</h5>
+		<check if="{{ isset(@message) }}">
+		<p class="message">{{ @message }}</p>
+		</check>
+		<p>
+			<label for="title"><small>Title</small></label><br />
+			<input id="title" name="title" type="text" {{ isset(@POST.title)?('value="'.@POST.title.'"'):'' }} />
+		</p>
+		<p>
+			<label for="contents"><small>Contents</small></label><br />
+			<textarea id="contents" name="contents">{{ isset(@POST.contents)?@POST.contents:'' }}</textarea>
+		</p>
+		<p>
+			<input id="commentable" name="commentable" type="checkbox" {{ isset(@POST.commentable) && @POST.commentable?'checked="checked"':'' }} value="1" /> <label for="commentable"><small>Allow comments</small></label>
+		</p>
+		<check if="{{ isset(@POST.updated) && @POST.updated }}">
+		<p><small>Last updated {{ date(@time_format,@POST.updated) }}</small></p>
+		</check>
+		<p>
+			<button id="save" name="save">Save</button>
+			<check if="{{ isset(@POST.updated) && @POST.updated }}">
+			<button id="erase" name="erase">Erase</button>
+			</check>
+		</p>
+	</form>
+</div>
