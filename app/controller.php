@@ -25,11 +25,11 @@ class Controller {
 		$f3=Base::instance();
 		// Connect to the database
 		$db=new DB\SQL($f3->get('db'));
-		if (file_exists('setup.sql')) {
+		if (file_exists('../db/setup.sql')) {
 			// Initialize database with default setup
-			$db->exec(explode(';',$f3->read('setup.sql')));
+			$db->exec(explode(';',$f3->read('../db/setup.sql')));
 			// Make default setup inaccessible
-			rename('setup.sql','setup.$ql');
+			rename('../db/setup.sql','../db/setup.$ql');
 		}
 		// Use database-managed sessions
 		new DB\SQL\Session($db);
