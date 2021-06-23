@@ -99,8 +99,10 @@ class CMS extends Controller {
 		$f3->set('COOKIE.sent',TRUE);
 		if ($f3->get('message')) {
 			$img=new Image;
+			$path = $f3->get("ROOT");
+			$path = str_replace("\\", "/", $path) . '/fonts/';
 			$f3->set('captcha',$f3->base64(
-				$img->captcha('fonts/thunder.ttf',18,5,'SESSION.captcha')->
+				$img->captcha('thunder.ttf',18,5,'SESSION.captcha', $path)->
 					dump(),'image/png'));
 		}
 		$f3->set('inc','login.htm');
